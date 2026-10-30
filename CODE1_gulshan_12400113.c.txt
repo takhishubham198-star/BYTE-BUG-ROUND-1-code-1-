@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <string.h>
+#include <vector.h>  
+ 
+
+struct Book {
+    int id;
+    string title;
+    bool isAvailable;
+    float price;
+}
+
+ 
+Book* findBook(vector<Book> books, int searchId) {
+    
+    for (int i = 0; i < books.size(); i++) {
+        
+        if (books[i].id == searchId) {
+            return &books[i];  
+        }
+    }
+    return NULL;
+}
+
+int main() {
+     
+    vector<Book> library = {
+        {101, "C Programming", true, 350.50},
+        {102, "Data Structures", false, 450.00},
+        {103, "Algorithms", true, 500}
+    }
+
+    int search = 102;
+    Book* b = findBook(library, search);
+
+     
+    printf("Book Found: ");
+ printf(b.title);
+	printf("\n");
+
+     
+    if (b->isAvailable == true) {
+        printf("Status: Available for Issue\n");
+    } else {
+        printf("Status: Already Issued\n");
+    }
+
+     
+    printf("Book Price: ");
+ printf(b->price);
+
+     
+    return 0;
+}
